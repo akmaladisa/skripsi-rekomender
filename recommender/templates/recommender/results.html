@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Recommendation Results{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="mb-4">Recommended Thesis Topics</h2>
+
+        {% if recommendations %}
+        <div class="row">
+            {% for item in recommendations %}
+            <div class="col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.skripsi.judul_skripsi }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            Similarity Score: <span class="badge bg-success">{{ item.score }}%</span>
+                            | Category: {{ item.skripsi.kategori_topik }}
+                        </h6>
+                        <p class="card-text">{{ item.skripsi.abstrak|truncatewords:50 }}</p>
+                        <a href="{% url 'thesis_detail' item.skripsi.id %}" class="btn btn-sm btn-outline-primary">View
+                            Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            No recommendations found. Please ensure you have uploaded a transcript with valid grades (A, B) and that the
+            system has a dataset of thesis topics.
+        </div>
+        <a href="{% url 'upload_transcript' %}" class="btn btn-primary">Upload Transcript</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

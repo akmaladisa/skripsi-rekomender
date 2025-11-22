@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="mb-4">Admin Dashboard</h2>
+
+        <!-- Stats Row -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Students</h5>
+                        <p class="card-text display-4">{{ total_students }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Thesis Topics</h5>
+                        <p class="card-text display-4">{{ total_topics }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-info mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Uploads</h5>
+                        <p class="card-text display-4">{{ total_uploads }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-warning text-dark mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Recommendations</h5>
+                        <p class="card-text display-4">{{ total_recommendations }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions Row -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">Manage Dataset</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Add, edit, or remove thesis topics from the knowledge base.</p>
+                        <a href="{% url 'admin:recommender_datasetskripsi_changelist' %}"
+                            class="btn btn-outline-dark w-100">Go to Dataset Admin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">Manage Students</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>View registered students and their details.</p>
+                        <a href="{% url 'admin:accounts_mahasiswa_changelist' %}" class="btn btn-outline-dark w-100">Go
+                            to Student Admin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">System Logs</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>View history of uploads and recommendations.</p>
+                        <a href="{% url 'admin:recommender_rekomendasilog_changelist' %}"
+                            class="btn btn-outline-dark w-100">View Recommendation Logs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

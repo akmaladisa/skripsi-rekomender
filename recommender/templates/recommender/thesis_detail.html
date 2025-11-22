@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ skripsi.judul_skripsi }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'recommendation_results' %}">Recommendations</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Detail</li>
+            </ol>
+        </nav>
+
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">{{ skripsi.judul_skripsi }}</h4>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <span class="badge bg-info text-dark">{{ skripsi.kategori_topik }}</span>
+                    {% if skripsi.tahun_lulus %}
+                    <span class="badge bg-secondary">Year: {{ skripsi.tahun_lulus }}</span>
+                    {% endif %}
+                </div>
+
+                <h5 class="mt-4">Abstract</h5>
+                <p class="lead" style="font-size: 1rem; text-align: justify;">
+                    {{ skripsi.abstrak|default:"No abstract available." }}
+                </p>
+
+                {% if skripsi.kata_kunci %}
+                <h5 class="mt-4">Keywords</h5>
+                <p>{{ skripsi.kata_kunci }}</p>
+                {% endif %}
+
+                <hr>
+                <a href="{% url 'recommendation_results' %}" class="btn btn-secondary">Back to Recommendations</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
