@@ -91,6 +91,18 @@ Akses aplikasi di browser:
 - **Web App**: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 - **Admin Panel**: [http://127.0.0.1:8000/admin-panel/](http://127.0.0.1:8000/admin-panel/)
 
+### 8. Akun Demo (Kredensial)
+
+Berikut adalah akun dummy yang dapat digunakan untuk pengujian:
+
+**Akun Mahasiswa:**
+- **Username**: `test_student`
+- **Password**: `password123`
+
+**Akun Administrator:**
+- **Username**: `admin_dummy`
+- **Password**: `adminpassword123`
+
 ## Cara Penggunaan
 
 ### Sebagai Mahasiswa
